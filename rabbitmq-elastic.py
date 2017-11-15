@@ -10,7 +10,7 @@ import json
 import argparse
 
 import pika
-from elasticsearch import ElasticSearch
+from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
 
 LOG_FILENAME = "/var/log/rabbitmq-elastic.log"
@@ -60,7 +60,7 @@ class ElasticSearchConsumer(object):
         self._closing = False
         self._consumer_tag = None
         self._url = amqp_url
-        self._es = ElasticSearch(hosts=es_hosts)
+        self._es = Elasticsearch(hosts=es_hosts)
         self._actions = []
 
     def connect(self):
